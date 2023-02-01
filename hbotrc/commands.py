@@ -56,47 +56,47 @@ class BotCommands(Node):
             msg_type=StartCommandMessage,
             rpc_name=self._start_uri
         )
-        print(f'[*] Created RPC client for start command @ {self._start_uri}')
+        # print(f'[*] Created RPC client for start command @ {self._start_uri}')
         self._stop_cmd = self.create_rpc_client(
             msg_type=StopCommandMessage,
             rpc_name=self._stop_uri
         )
-        print(f'[*] Created RPC client for stop command @ {self._stop_uri}')
+        # print(f'[*] Created RPC client for stop command @ {self._stop_uri}')
         self._import_cmd = self.create_rpc_client(
             msg_type=ImportCommandMessage,
             rpc_name=self._import_uri
         )
-        print(f'[*] Created RPC client for import command @ {self._import_uri}')
+        # print(f'[*] Created RPC client for import command @ {self._import_uri}')
         self._config_cmd = self.create_rpc_client(
             msg_type=ConfigCommandMessage,
             rpc_name=self._config_uri
         )
-        print(f'[*] Created RPC client for config command @ {self._config_uri}')
+        # print(f'[*] Created RPC client for config command @ {self._config_uri}')
         self._status_cmd = self.create_rpc_client(
             msg_type=StatusCommandMessage,
             rpc_name=self._status_uri
         )
-        print(f'[*] Created RPC client for status command @ {self._status_uri}')
+        # print(f'[*] Created RPC client for status command @ {self._status_uri}')
         self._history_cmd = self.create_rpc_client(
             msg_type=HistoryCommandMessage,
             rpc_name=self._history_uri
         )
-        print(f'[*] Created RPC client for history command @ {self._history_uri}')
+        # print(f'[*] Created RPC client for history command @ {self._history_uri}')
         self._balance_limit_cmd = self.create_rpc_client(
             msg_type=BalanceLimitCommandMessage,
             rpc_name=self._balance_limit_uri
         )
-        print(f'[*] Created RPC client for balance limit command @ {self._balance_limit_uri}')
+        # print(f'[*] Created RPC client for balance limit command @ {self._balance_limit_uri}')
         self._balance_paper_cmd = self.create_rpc_client(
             msg_type=BalancePaperCommandMessage,
             rpc_name=self._balance_paper_uri
         )
-        print(f'[*] Created RPC client for balance limit command @ {self._balance_limit_uri}')
+        # print(f'[*] Created RPC client for balance limit command @ {self._balance_limit_uri}')
         self._command_shortcut_cmd = self.create_rpc_client(
             msg_type=CommandShortcutMessage,
             rpc_name=self._command_shortcut_uri
         )
-        print(f'[*] Created RPC client for command shortcuts @ {self._command_shortcut_uri}')
+        # print(f'[*] Created RPC client for command shortcuts @ {self._command_shortcut_uri}')
 
     def start(self,
               log_level: str = None,
