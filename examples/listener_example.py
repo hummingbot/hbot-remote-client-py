@@ -4,6 +4,11 @@ import asyncio
 from hbotrc import BotListener
 
 
+def on_notification(msg):
+    _text = msg.msg
+    print(f'[NOTIFICATION] - {_text}')
+
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) < 2:
@@ -17,6 +22,7 @@ if __name__ == "__main__":
         bot_id=_id,
         notifications=True,
         events=True,
-        logs=True
+        logs=True,
+        on_notification=on_notification
     )
     asyncio.new_event_loop().run_until_complete(client.run_forever())
