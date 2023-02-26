@@ -1,5 +1,7 @@
-from typing import Any, List, Optional, Tuple
+from typing import Any, List, Optional, Tuple, Dict
 from commlib.msg import PubSubMessage, RPCMessage, HeartbeatMessage
+from pydantic import root_validator, validator
+import datetime
 
 
 class BROKER_STATUS_CODE:
@@ -16,15 +18,15 @@ class NotifyMessage(PubSubMessage):
 class EventMessage(PubSubMessage):
     timestamp: Optional[int] = -1
     type: Optional[str] = 'Unknown'
-    data: Optional[dict] = {}
+    data: Optional[Dict[str, Any]] = {}
 
 
 class LogMessage(PubSubMessage):
-    timestamp: float = 0.0
-    msg: str = ''
-    level_no: int = 0
-    level_name: str = ''
-    logger_name: str = ''
+    timestamp: Optional[float] = 0.0
+    msg: Optional[str] = ''
+    level_no: Optional[int] = 0
+    level_name: Optional[str] = ''
+    logger_name: Optional[str] = ''
 
 
 class StartCommandMessage(RPCMessage):
@@ -122,3 +124,15 @@ class BalancePaperCommandMessage(RPCMessage):
         status: Optional[int] = BROKER_STATUS_CODE.SUCCESS
         msg: Optional[str] = ''
         data: Optional[str] = ''
+
+
+class ExternalEvent(PubSubMessage):
+    name: str
+    timestamp: Optional[int] = -1
+    sequence: Optional[int] = 0
+    type: Optional[str] = 'eevent'
+    data: Optional[Dict[str, Any]] = {}
+
+    @validator('timestamp', pre=True, always=True)
+    def set_ts_now(cls, v):
+        return v or datetime.now().timestamp()

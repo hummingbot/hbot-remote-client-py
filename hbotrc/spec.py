@@ -18,3 +18,4 @@ class TopicSpecs:
     MARKET_EVENTS: str = '/events'
     NOTIFICATIONS: str = '/notify'
     HEARTBEATS: str = '/hb'
+    EXTERNAL_EVENTS: str = '/external/events/*'

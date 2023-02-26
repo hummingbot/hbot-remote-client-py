@@ -4,3 +4,5 @@ __maintainer__ = "Konstantinos Panayiotou"
 
 from .listener import BotListener
 from .commands import BotCommands
+from .external_events import BotEventEmitter
+from .msgs import ExternalEvent
