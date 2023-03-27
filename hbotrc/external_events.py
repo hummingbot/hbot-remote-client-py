@@ -58,7 +58,6 @@ class BotEventEmitter(Node):
         _data = event.dict()
         # Remove name property from message. Only used on client
         _data.pop('name')
-        print(_uri)
         self._pub.publish(_data, _uri)
 
     def send(self, event: ExternalEvent):
