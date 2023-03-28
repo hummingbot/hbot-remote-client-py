@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "hbotrc"
+version = "0.1.0"
+description = "Python implementation of remote client for hummingbot"
+authors = ["Konstantinos Panayiotou <klpanagi@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+commlib-py = "0.8.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
