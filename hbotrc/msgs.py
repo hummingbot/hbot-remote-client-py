@@ -57,6 +57,7 @@ class ConfigCommandMessage(RPCMessage):
 
     class Response(RPCMessage.Response):
         changes: Optional[List[Tuple[str, Any]]] = []
+        config: Optional[Dict[str, Any]] = {}
         status: Optional[int] = BROKER_STATUS_CODE.SUCCESS
         msg: Optional[str] = ''
 
