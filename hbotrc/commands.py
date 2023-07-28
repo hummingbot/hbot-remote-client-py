@@ -101,93 +101,111 @@ class BotCommands(Node):
     def start(self,
               log_level: str = None,
               script: str = None,
-              async_backend: bool = False
+              async_backend: bool = False,
+              timeout: int = 5
               ):
         resp = self._start_cmd.call(
-            StartCommandMessage.Request(
+            msg=StartCommandMessage.Request(
                 log_level=log_level,
                 script=script,
                 async_backend=async_backend
-            )
+            ),
+            timeout=timeout
         )
         return resp
 
     def stop(self,
              skip_order_cancellation: bool = False,
-             async_backend: bool = False
+             async_backend: bool = False,
+             timeout: int = 5
              ):
         resp = self._stop_cmd.call(
-            StopCommandMessage.Request(
+            msg=StopCommandMessage.Request(
                 skip_order_cancellation=skip_order_cancellation,
                 async_backend=async_backend
-            )
+            ),
+            timeout=timeout
         )
         return resp
 
     def import_strategy(self,
                         strategy: str,
+                        timeout: int = 5
                         ):
         resp = self._import_cmd.call(
-            ImportCommandMessage.Request(strategy=strategy)
+            msg=ImportCommandMessage.Request(strategy=strategy),
+            timeout=timeout
         )
         return resp
 
     def config(self,
                params: List[Tuple[str, Any]],
+               timeout: int = 5
                ):
         resp = self._config_cmd.call(
-            ConfigCommandMessage.Request(params=params)
+            msg=ConfigCommandMessage.Request(params=params),
+            timeout=timeout
         )
         return resp
 
     def status(self,
-               async_backend: bool = False
+               async_backend: bool = False,
+               timeout: int = 5
                ):
         resp = self._status_cmd.call(
-            StatusCommandMessage.Request(async_backend=async_backend)
+            msg=StatusCommandMessage.Request(async_backend=async_backend),
+            timeout=timeout
         )
         return resp
 
     def history(self,
-                async_backend: bool = False
+                async_backend: bool = False,
+                timeout: int = 5
                 ):
         resp = self._history_cmd.call(
-            HistoryCommandMessage.Request(async_backend=async_backend)
+            msg=HistoryCommandMessage.Request(async_backend=async_backend),
+            timeout=timeout
         )
         return resp
 
     def balance_limit(self,
                       exchange: str,
                       asset: str,
-                      amount: float
+                      amount: float,
+                      timeout: int = 5
                       ):
         resp = self._balance_limit_cmd.call(
-            BalanceLimitCommandMessage.Request(
+            msg=BalanceLimitCommandMessage.Request(
                 exchange=exchange,
                 asset=asset,
                 amount=amount
-            )
+            ),
+            timeout=timeout
         )
         return resp
 
     def balance_paper(self,
                       asset: str,
-                      amount: float
+                      amount: float,
+                      timeout: int = 5
                       ):
         resp = self._balance_paper_cmd.call(
-            BalancePaperCommandMessage.Request(
+            msg=BalancePaperCommandMessage.Request(
                 asset=asset,
                 amount=amount
-            )
+            ),
+            timeout=timeout
         )
         return resp
 
     def shortcut(self,
-                 params=List[List[Any]]
+                 params=List[List[Any]],
+                 timeout: int = 5
                  ):
         resp = self._command_shortcut_uri.call(
-            CommandShortcutMessage.Request(
+            msg=CommandShortcutMessage.Request(
                 params=params
-            )
+            ),
+            timeout=timeout
         )
         return resp
