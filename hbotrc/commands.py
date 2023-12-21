@@ -101,6 +101,7 @@ class BotCommands(Node):
     def start(self,
               log_level: str = None,
               script: str = None,
+              conf: str = None,
               async_backend: bool = False,
               timeout: int = 5
               ):
@@ -108,6 +109,7 @@ class BotCommands(Node):
             msg=StartCommandMessage.Request(
                 log_level=log_level,
                 script=script,
+                conf=conf,
                 async_backend=async_backend
             ),
             timeout=timeout
