@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-commlib-py = "0.10.5"
+commlib-py = "0.11.5"
 
 
 [build-system]
